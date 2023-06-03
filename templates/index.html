@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .qr-code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-code-container img {
+            width: 300px;
+            max-width: 100%;
+            margin-top: 20px;
+            border: 3px solid #4CAF50;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <div class="container">
+        <div class="form-container">
+            <form action="/" method="POST">
+                <input type="text" id="data" name="data" placeholder="Enter data or link..." required>
+                <button type="submit">Generate QR Code</button>
+            </form>
+        </div>
+
+        {% if qr_code %}
+        <div class="qr-code-container">
+            <h2>Generated QR Code:</h2>
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
